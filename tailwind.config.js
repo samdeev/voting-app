@@ -21,7 +21,7 @@ export default {
                 'purple': '#8b60ed'
             },
             maxWidth: {
-                'custom': '62.5rem'
+                'custom': '68.5rem'
             },
             width: {
                 'cw-1': '17.5rem',
