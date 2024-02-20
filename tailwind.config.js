@@ -27,6 +27,9 @@ export default {
                 'cw-1': '17.5rem',
                 'cw-2': '43.75rem'
             },
+            spacing: {
+                22: '5.5rem',
+            },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
             },
