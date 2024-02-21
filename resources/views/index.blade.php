@@ -65,17 +65,25 @@
                             <div>&bull;</div>
                             <div class="text-gray-900">3 Comments</div>
                         </div>
-                        <div class="flex items-center space-x-2 text-xs">
+                        <div
+                            x-data="{ show: false }"
+                            class="flex items-center space-x-2 text-xs">
                             <div class="relative bg-gray-200 text-xxs uppercase font-semibold leading-none rounded-full text-center w-28 h-7 py-2 px-4">Open</div>
                             {{-- Dialog --}}
-                            <button class="bg-gray-200 border hover:bg-gray-300 rounded-full h-7 transition duration-200 ease-in-out px-4">
+                            <button @click="show = !show" class="bg-gray-200 border hover:bg-gray-300 rounded-full h-7 transition duration-200 ease-in-out px-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                                   </svg>
 
-                                  <ul class="absolute w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 ml-8">
-                                    <li><a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-200 ease-in-out">Mark as spam</a></li>
-                                    <li><a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-200 ease-in-out">Delete Post</a></li>
+                                  <ul
+                                    x-cloak
+                                    x-show="show"
+                                    x-transition.duration.400ms
+                                    @click.outside="show = false"
+                                    @keydown.escape.window="show = false"
+                                    class="absolute w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 ml-8">
+                                        <li><a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-200 ease-in-out">Mark as spam</a></li>
+                                        <li><a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-200 ease-in-out">Delete Post</a></li>
                                   </ul>
                             </button>
                         </div>
