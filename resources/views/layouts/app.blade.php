@@ -18,9 +18,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans bg-gray-background text-gray-900 text-sm antialiased">
-        <header class="flex items-center justify-between px-8 py-2">
+        <header class="flex flex-col md:flex-row items-center justify-between px-8 py-2">
             <a href="#"><img src="{{ asset('image/logo-dark.svg') }}" alt="logo"></a>
-            <div class="flex items-center">
+            <div class="flex items-center mt-2 md:mt-0">
                 @if (Route::has('login'))
                     <div class="p-6 text-right">
                         @auth
@@ -48,9 +48,9 @@
             </div>
         </header>
 
-        <main class="container mx-auto max-w-custom flex">
-            <div class="w-cw-1 mr-5">
-                <div class="border-2 rounded-xl bg-white mt-16"
+        <main class="container mx-auto max-w-custom flex flex-col md:flex-row">
+            <div class="w-70 md:mr-5 mx-auto md:mx-0">
+                <div class="border-2 rounded-xl bg-white mt-16 md:sticky md:top-8"
                     style="
                     border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
                     background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
@@ -58,7 +58,7 @@
                     background-clip: content-box, border-box;
                     "
                 >
-                    <div class="text-center px-6 py-2 pt-7">
+                    <div class="text-center px-6 py-2 pt-8">
                         <h3 class="font-semibold text-base">Add an idea</h3>
                         <p class="text-xs mt-4">Let us know what you would like and we'll take a look over!</p>
                     </div>
@@ -91,7 +91,7 @@
                                   </svg>
                                 <span class="ml-1 uppercase">Attach</span>
                             </button>
-                            
+
                             <button
                                 type="submit"
                                 class="flex items-center justify-center w-1/2 h-11 text-xs bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-200 ease-in-out"
@@ -103,15 +103,15 @@
                 </div>
             </div>
 
-            <div class="w-cw-2">
+            <div class="w-full px-2 md:px-0 md:w-700">
                 <nav class="flex items-center justify-between text-xs">
-                    <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
+                    <ul class="hidden md:flex uppercase font-semibold border-b-4 pb-3 space-x-10">
                         <li><a href="#" class="border-b-4 border-blue pb-3">All Ideas (87)</a></li>
                         <li><a href="#" class="text-gray-400 transition duration-500 ease-in border-b-4 pb-3 hover:border-blue">Considering (87)</a></li>
                         <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">In Progress (87)</a></li>
                     </ul>
 
-                    <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
+                    <ul class="hidden md:flex uppercase font-semibold border-b-4 pb-3 space-x-10">
                         <li><a href="#" class="text-gray-400 transition duration-500 ease-in border-b-4 pb-3 hover:border-blue">Implemented (87)</a></li>
                         <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Closed (87)</a></li>
                     </ul>

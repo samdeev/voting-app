@@ -10,24 +10,24 @@
 
     {{-- start of idea container --}}
     <div class="idea-container bg-white rounded-xl flex mt-4">
-        <div class="flex flex-1 px-4 py-6">
-            <div class="flex-none">
+        <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
+            <div class="flex-none mx-2 md:mx-0">
                 <a href="#">
                     <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar" class="h-14 w-14 rounded-xl">
                 </a>
             </div>
-            <div class="w-full mx-4">
-                <h4 class="text-xl font-semibold">
+            <div class="w-full mx-2 md:mx-0">
+                <h4 class="text-xl font-semibold mt-2 md:mt-0">
                     <a href="#" class="hover:underline">A random text</a>
                 </h4>
                 <div class="text-gray-600 mt-3 line-clamp-3">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, veritatis.
                 </div>
 
-                <div class="flex items-center justify-between mt-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mt-6">
                     <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
-                        <div class="font-bold text-gray-900">John Doe</div>
-                        <div>&bull;</div>
+                        <div class="hidden md:block font-bold text-gray-900">John Doe</div>
+                        <div class="hidden md:block">&bull;</div>
                         <div>10 hours ago</div>
                         <div>&bull;</div>
                         <div>Category 1</div>
@@ -35,7 +35,10 @@
                         <div class="text-gray-900">3 Comments</div>
                     </div>
 
-                    <div x-data="{ show: false }" class="flex items-center space-x-2 text-xs">
+                    <div
+                        x-data="{ show: false }"
+                        class="flex items-center space-x-2 text-xs mt-4 md:mt-0"
+                    >
                         <div class="relative bg-gray-200 text-xxs uppercase font-semibold leading-none rounded-full text-center w-28 h-7 py-2 px-4">Open</div>
 
                         {{-- Dialog --}}
@@ -53,11 +56,21 @@
                                 x-transition.duration.400ms
                                 @click.outside="show = false"
                                 @keydown.escape.window="show = false"
-                                class="absolute w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 ml-8"
+                                class="absolute w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 md:ml-8 mt-2 md:mt-0 z-40"
                             >
                                 <li><a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-200 ease-in-out">Mark as spam</a></li>
                                 <li><a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-200 ease-in-out">Delete Post</a></li>
                               </ul>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center md:hidden mt-4 md:mt-0">
+                        <div class="bg-gray-100 text-center rounded-full h-10 px-4 py-2 pr-8">
+                            <div class="text-sm font-bold leading-none">12</div>
+                            <div class="text-xxs font-semibold leading-none text-gray-400">Votes</div>
+                        </div>
+                        <button class="w-20 bg-gray-200 border border-gray-200 font-bold text-xxs uppercase rounded-full hover:border-gray-400 transition duration-200 ease-in-out px-4 py-3 -mx-6">
+                            Voted
                         </button>
                     </div>
                 </div>
@@ -70,12 +83,12 @@
     <div class="buttons-container flex items-center justify-between mt-6">
         <div
             x-data="{ show: false }"
-            class="flex items-center space-x-4 ml-6">
+            class="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-4 md:ml-6">
             <div class="relative">
                 <button
                     @click="show = !show"
                     type="button"
-                    class="flex items-center justify-between h-11 text-xs bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-200 ease-in-out px-6 py-3 uppercase"
+                    class="flex items-center justify-between h-11 w-full text-xs bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-200 ease-in-out px-6 py-3 uppercase"
                 >
                     Reply
                 </button>
@@ -87,7 +100,7 @@
                     x-transition.duration.400ms
                     @click.outside="show = false"
                     @keydown.escape.window="show=false"
-                    class="absolute z-10 w-104 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2">
+                    class="absolute z-10 w-80 md:w-104 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2">
                     <form action="#" method="POST" class="space-y-4 px-4 py-6">
                         <div>
                             <textarea
@@ -97,16 +110,16 @@
                                 rows="4"
                                 class="w-full text-sm bg-gray-100 rounded-xl  placeholder:text-gray-900 border-none px-4 py-2 resize-none" placeholder="Go ahead, don't be shy. Share your thoughts..."></textarea>
                         </div>
-                        <div class="flex items-center space-x-3">
+                        <div class="flex flex-col md:flex-row items-center md:space-x-3 space-y-3 md:space-y-0">
                             <button
                             type="button"
-                            class="flex items-center justify-between h-11 text-xs bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-200 ease-in-out px-6 py-3 uppercase"
+                            class="flex items-center justify-center h-11 w-full md:w-1/2 text-xs bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-200 ease-in-out px-6 py-3 uppercase"
                         >
                             Post Comment
                         </button>
                         <button
                                 type="button"
-                                class="flex items-center justify-center w-1/2 h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-200 ease-in-out"
+                                class="flex items-center justify-center w-full md:w-32 h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-200 ease-in-out"
                             >
                                 <svg class="-rotate-45 text-gray-600 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
@@ -220,7 +233,7 @@
             {{-- end of set status --}}
         </div>
 
-        <div class="flex items-center justify-between space-x-4">
+        <div class="hidden md:flex items-center justify-between space-x-4">
             <div class="bg-white font-semibold text-center rounded-xl px-3 py-2">
                 <div class="text-xl leading-snug">12</div>
                 <div class="text-gray-400 text-xs leading-none">Votes</div>
@@ -237,18 +250,15 @@
     {{-- end of buttons container --}}
 
     {{-- start of comments container --}}
-    <div class="comments-container relative space-y-6 ml-22 my-8 mt-1 pt-4">
+    <div class="comments-container relative space-y-6 md:ml-22 my-8 mt-1 pt-4">
         <div class="comment-container relative bg-white rounded-xl flex mt-4">
-            <div class="flex flex-1 px-4 py-6">
+            <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
                 <div class="flex-none">
                     <a href="#">
                         <img src="https://source.unsplash.com/200x200/?face&crop=face&v=2" alt="avatar" class="h-14 w-14 rounded-xl">
                     </a>
                 </div>
-                <div class="w-full mx-4">
-                    {{-- <h4 class="text-xl font-semibold">
-                        <a href="#" class="hover:underline">A random text</a>
-                    </h4> --}}
+                <div class="w-full md:mx-4">
                     <div class="text-gray-600 mt-3 line-clamp-3">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident et obcaecati delectus libero, sit dolor sunt voluptatem iste similique corrupti quae, nam minima corporis saepe quos deserunt error sequi rerum?
                     </div>
@@ -277,7 +287,7 @@
                                     x-transition.duration.400ms
                                     @click.outside="show = false"
                                     @keydown.escape.window="show = false"
-                                    class="absolute w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 ml-8 z-30">
+                                    class="absolute w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 z-30 mt-2 -ml-34 md:ml-8">
                                     <li><a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-200 ease-in-out">Mark as spam</a></li>
                                     <li><a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-200 ease-in-out">Delete Post</a></li>
                                   </ul>

@@ -23,14 +23,14 @@ export default {
             maxWidth: {
                 'custom': '68.5rem'
             },
-            width: {
-                'cw-1': '17.5rem',
-                'cw-2': '43.75rem'
-            },
             spacing: {
                 22: '5.5rem',
+                32: '8rem',
+                34: '8.5rem',
+                70: '17.5rem',
                 76: '19rem',
-                104: '26rem'
+                104: '26rem',
+                700: '43.75rem'
             },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
