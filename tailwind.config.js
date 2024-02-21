@@ -29,6 +29,8 @@ export default {
             },
             spacing: {
                 22: '5.5rem',
+                76: '19rem',
+                104: '26rem'
             },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
