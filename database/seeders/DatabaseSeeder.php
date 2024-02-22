@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\IdeaSeeder;
+use Database\Seeders\StatusSeeder;
 use Database\Seeders\CategorySeeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             CategorySeeder::class,
+            StatusSeeder::class,
             IdeaSeeder::class
         ]);
     }

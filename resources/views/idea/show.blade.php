@@ -39,7 +39,7 @@
                         x-data="{ show: false }"
                         class="flex items-center space-x-2 text-xs mt-4 md:mt-0"
                     >
-                        <div class="relative bg-gray-200 text-xxs uppercase font-semibold leading-none rounded-full text-center w-28 h-7 py-2 px-4">Open</div>
+                    <div class="{{ $idea->getStatusClasses() }} text-xxs uppercase font-bold leading-none rounded-full text-center w-28 h-7 py-2 px-4">{{ $idea->status->name }}</div>
 
                         {{-- Dialog --}}
                         <button
