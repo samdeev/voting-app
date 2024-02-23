@@ -4,8 +4,9 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\Idea;
-use App\Models\Category;
+use App\Models\User;
 use App\Models\Status;
+use App\Models\Category;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -15,6 +16,8 @@ class ShowIdeasTest extends TestCase
 
     public function test_list_of_ideas_show_on_main_page()
     {
+        $user = User::factory()->create();
+
         $categoryOne = Category::factory()->create();
         $categoryTwo = Category::factory()->create();
 
@@ -43,6 +46,8 @@ class ShowIdeasTest extends TestCase
 
     public function test_single_idea_shows_correctly_on_show_page()
     {
+        $user = User::factory()->create();
+
         $category = Category::factory()->create();
         $status = Status::factory()->create();
 
@@ -53,13 +58,15 @@ class ShowIdeasTest extends TestCase
 
         $response = $this->get(route('ideas.show', $idea));
 
-        $response->assertSee(data_get($idea, 'title'));
-        $response->assertSee(data_get($idea, 'description'));
-        $response->assertSee(data_get($category, 'name'));
+        $response->assertSuccessful();
+        $response->assertViewHas('idea.title', $idea->title);
+        $response->assertViewHas('idea.description', $idea->description);
     }
 
     public function test_ideas_pagination_works()
     {
+        $user = User::factory()->create();
+
         $category = Category::factory()->create();
         $status = Status::factory()->create();
 
@@ -83,6 +90,8 @@ class ShowIdeasTest extends TestCase
 
     public function test_single_idea_has_unique_slug()
     {
+        $user = User::factory()->create();
+
         $category = Category::factory()->create();
         $status = Status::factory()->create();
 

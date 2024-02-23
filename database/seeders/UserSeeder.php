@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Idea;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class IdeaSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Idea::factory(100)->create();
+        User::factory(20)->create();
     }
 }

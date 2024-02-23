@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Idea;
-use App\Http\Requests\StoreIdeaRequest;
-use App\Http\Requests\UpdateIdeaRequest;
+use App\Models\Vote;
+use App\Http\Requests\StoreVoteRequest;
+use App\Http\Requests\UpdateVoteRequest;
 
-class IdeaController extends Controller
+class VoteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view("idea.index", [
-            'ideas' => Idea::with(['user', 'category', 'status'])->withCount('votes')->latest()->simplePaginate(10)
-        ]);
+        //
     }
 
     /**
@@ -29,7 +27,7 @@ class IdeaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreIdeaRequest $request)
+    public function store(StoreVoteRequest $request)
     {
         //
     }
@@ -37,18 +35,15 @@ class IdeaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Idea $idea)
+    public function show(Vote $vote)
     {
-        return view('idea.show', [
-            'idea' => $idea,
-            'votesCount' => $idea->votes()->count()
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Idea $idea)
+    public function edit(Vote $vote)
     {
         //
     }
@@ -56,7 +51,7 @@ class IdeaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateIdeaRequest $request, Idea $idea)
+    public function update(UpdateVoteRequest $request, Vote $vote)
     {
         //
     }
@@ -64,7 +59,7 @@ class IdeaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Idea $idea)
+    public function destroy(Vote $vote)
     {
         //
     }

@@ -23,7 +23,7 @@ class IdeaFactory extends Factory
         $title = fake()->words(5, true);
 
         return [
-            'user_id' => User::factory(),
+            'user_id' => User::all()->random()->id,
             'category_id' => Category::all()->random()->id,
             'status_id' => Status::all()->random()->id,
             'title' =>$title,

@@ -8,6 +8,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -48,6 +49,11 @@ class User extends Authenticatable
     public function ideas(): HasMany
     {
         return $this->hasMany(Idea::class);
+    }
+
+    public function votes(): BelongsToMany
+    {
+        return $this->BelongsToMany(Idea::class, 'votes');
     }
 
     public function getAvatar()
