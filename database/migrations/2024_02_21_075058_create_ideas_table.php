@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->constrained();
-            $table->foreignId('status_id')->constrained();
+            $table->foreignId('status_id')->default(1)->constrained();
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
