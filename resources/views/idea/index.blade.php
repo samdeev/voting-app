@@ -82,7 +82,16 @@
                             <div
                                 x-data="{ show: false }"
                                 class="flex items-center space-x-2 text-xs mt-4 md:mt-0">
-                                <div class="{{ $idea->getStatusClasses() }} text-xxs uppercase font-bold leading-none rounded-full text-center w-28 h-7 py-2 px-4">{{ $idea->status->name }}</div>
+                                <div @class([
+                                    'text-xxs uppercase font-bold leading-none rounded-full text-center w-28 h-7 py-2 px-4',
+                                    'bg-blue text-white' => $idea->status->name === 'Open',
+                                    'bg-purple text-white' => $idea->status->name === 'Considering',
+                                    'bg-yellow text-white' => $idea->status->name === 'In Progress',
+                                    'bg-green text-white' => $idea->status->name === 'Implemented',
+                                    'bg-red text-white' => $idea->status->name === 'Closed',
+                                    ])>
+                                        {{ $idea->status->name }}
+                                </div>
 
                                 <button @click="show = !show" class="bg-gray-200 border hover:bg-gray-300 rounded-full h-7 transition duration-200 ease-in-out px-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

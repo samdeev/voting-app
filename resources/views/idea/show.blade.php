@@ -39,7 +39,16 @@
                         x-data="{ show: false }"
                         class="flex items-center space-x-2 text-xs mt-4 md:mt-0"
                     >
-                    <div class="{{ $idea->getStatusClasses() }} text-xxs uppercase font-bold leading-none rounded-full text-center w-28 h-7 py-2 px-4">{{ $idea->status->name }}</div>
+                    <div @class([
+                        'text-xxs uppercase font-bold leading-none rounded-full text-center w-28 h-7 py-2 px-4',
+                        'bg-blue text-white' => $idea->status->name === 'Open',
+                        'bg-purple text-white' => $idea->status->name === 'Considering',
+                        'bg-yellow text-white' => $idea->status->name === 'In Progress',
+                        'bg-green text-white' => $idea->status->name === 'Implemented',
+                        'bg-red text-white' => $idea->status->name === 'Closed',
+                        ])>
+                            {{ $idea->status->name }}
+                    </div>
 
                         {{-- Dialog --}}
                         <button

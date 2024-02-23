@@ -29,25 +29,4 @@ class Idea extends Model
     {
         return $this->belongsTo(Status::class);
     }
-
-    // public function slug(): Attribute
-    // {
-    //     return Attribute::make(
-    //         get: fn (string $value) => $value,
-    //         set: fn (string $value) => Str::slug($value),
-    //     );
-    // }
-
-    public function getStatusClasses()
-    {
-        $statuses = [
-            'Open' => 'bg-blue text-white',
-            'Considering' => 'bg-purple text-white',
-            'In Progress' => 'bg-yellow text-white',
-            'Implemented' => 'bg-green text-white',
-            'Closed' => 'bg-red text-white',
-        ];
-
-        return $statuses[$this->status->name];
-    }
 }
