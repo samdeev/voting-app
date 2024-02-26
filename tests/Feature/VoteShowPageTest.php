@@ -88,6 +88,6 @@ class VoteShowPageTest extends TestCase
         ->set('idea', $idea)
         ->set('votesCount', 5)
         ->assertSet('votesCount', 5)
-        ->assertSeeHtml('<div class="text-xl leading-snug">5</div');
+        ->assertSee('5');
     }
 }

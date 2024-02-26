@@ -153,13 +153,17 @@
 
     <div class="hidden md:flex items-center justify-between space-x-4">
         <div class="bg-white font-semibold text-center rounded-xl px-3 py-2">
-            <div class="text-xl leading-snug">{{ $votesCount }}</div>
+            <div @class(['text-xl leading-snug', 'text-blue' => $hasVoted])>{{ $votesCount }}</div>
             <div class="text-gray-400 text-xs leading-none">Votes</div>
         </div>
 
         <button
             type="button"
-            class="h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-200 ease-in-out px-6 py-3"
+            @class([
+                'h-11 text-xs font-semibold rounded-xl border transition duration-200 ease-in-out px-6 py-3',
+                'bg-blue border-blue hover:border-blue text-white' => $hasVoted,
+                'bg-gray-200 border-gray-200 hover:border-gray-200' => !$hasVoted,
+            ])
         >
             <span class="mr-2 uppercase">Vote</span>
         </button>

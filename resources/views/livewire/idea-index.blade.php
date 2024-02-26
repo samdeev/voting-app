@@ -4,7 +4,7 @@ x-data
     const target = $event.target.tagName.toLowerCase()
     const ignores = ['button', 'img', 'path', 'svg', 'a']
 
-    if (!ignores.includes(target)) {
+    if (! ignores.includes(target)) {
         $event.target.closest('.idea-container').querySelector('.idea-link').click()
     }
 "
@@ -12,12 +12,16 @@ class="idea-container bg-white rounded-xl flex hover:shadow-card transition dura
 >
 <div class="hidden md:block border-r border-gray-200 px-5 py-8">
     <div class="text-center">
-        <div class="font-semibold text-2xl">{{ $votesCount }}</div>
+        <div @class(['font-semibold text-2xl', 'text-blue' => $hasVoted])>{{ $votesCount }}</div>
         <div class="text-gray-500">Votes</div>
     </div>
 
     <div class="mt-8">
-        <button class="w-20 border border-gray-200 hover:border-gray-400 transition duration-200 ease-in-out bg-gray-200 font-bold text-xxs uppercase rounded-xl px-4 py-3">Vote</button>
+        <button @class([
+            'w-20 border transition duration-200 ease-in-out font-bold text-xxs uppercase rounded-xl px-4 py-3',
+            'bg-blue border-blue text-white border-blue hover:border-blue' => $hasVoted,
+            'bg-gray-200 text-gray-900 border-gray-200' => !$hasVoted
+            ])>{{ $hasVoted ? 'Voted' : 'Vote' }}</button>
     </div>
 </div>
 
@@ -78,11 +82,15 @@ class="idea-container bg-white rounded-xl flex hover:shadow-card transition dura
 
             <div class="flex items-center md:hidden mt-4 md:mt-0">
                 <div class="bg-gray-100 text-center rounded-full h-10 px-4 py-2 pr-8">
-                    <div class="text-sm font-bold leading-none">{{ $votesCount }}</div>
+                    <div @class(['text-sm font-bold leading-none', 'text-blue' => $hasVoted])>{{ $votesCount }}</div>
                     <div class="text-xxs font-semibold leading-none text-gray-400">Votes</div>
                 </div>
-                <button class="w-20 bg-gray-200 border border-gray-200 font-bold text-xxs uppercase rounded-full hover:border-gray-400 transition duration-200 ease-in-out px-4 py-3 -mx-6">
-                    Voted
+                <button @class([
+                    'w-20 border transition duration-200 ease-in-out font-bold text-xxs uppercase rounded-xl px-4 py-3',
+                    'bg-blue border-blue text-white border-blue hover:border-blue' => $hasVoted,
+                    'bg-gray-200 text-gray-900 border-gray-200' => !$hasVoted
+                ])>
+                    {{ $hasVoted ? 'Voted' : 'Vote' }}
                 </button>
             </div>
         </div>
